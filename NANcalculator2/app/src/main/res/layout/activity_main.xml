@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    WrapLab Main Layout
+    A highly responsive, interactive shawarma-themed calculator interface.
+
+    KEY FEATURES:
+    - ConstraintLayout: Ensures the UI adapts to different screen sizes and orientations.
+    - Flow Helper: Dynamically organizes ingredient buttons into a grid.
+    - Layered Background: Kitchen image + Dark filter for optimal text readability.
+    - Physical Metaphor: The display is designed to look like a receipt coming out of a slot.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pita_cream"
+    tools:context=".MainActivity">
+
+    <!--
+        HEADER SECTION
+        The red header provides brand identity and holds the info utility button.
+    -->
+    <View
+        android:id="@+id/header_bg"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:background="@drawable/header_rounded_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/shop_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/shop_name"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/header_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/header_bg" />
+
+    <ImageButton
+        android:id="@+id/btnInfo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/info_desc"
+        android:src="@android:drawable/ic_menu_info_details"
+        app:layout_constraintBottom_toBottomOf="@id/header_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/header_bg"
+        app:tint="@color/white" />
+
+    <!--
+        ENVIRONMENT / KITCHEN WALL
+        Kitchen background image with a dark overlay to maintain UI contrast.
+    -->
+    <ImageView
+        android:id="@+id/kitchen_wall"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/kitchenbg"
+        app:layout_constraintBottom_toTopOf="@id/counter_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_bg" />
+
+    <View
+        android:id="@+id/dark_filter"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#99000000"
+        app:layout_constraintBottom_toBottomOf="@id/kitchen_wall"
+        app:layout_constraintEnd_toEndOf="@id/kitchen_wall"
+        app:layout_constraintStart_toStartOf="@id/kitchen_wall"
+        app:layout_constraintTop_toTopOf="@id/kitchen_wall" />
+
+    <!--
+        COUNTER TOP BACKGROUND
+        The 'table' where ingredients are placed. Separated from the wall by a 50% guideline.
+    -->
+    <View
+        android:id="@+id/counter_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/counter_orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!--
+        RECEIPT SYSTEM
+        Simulates a printer slot and the paper display.
+    -->
+    <View
+        android:id="@+id/receipt_slot"
+        android:layout_width="180dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/slot_rounded_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_bg" />
+
+    <TextView
+        android:id="@+id/display"
+        android:layout_width="170dp"
+        android:layout_height="200dp"
+        android:background="@drawable/receipt_rounded_bg"
+        android:elevation="4dp"
+        android:fontFamily="monospace"
+        android:gravity="top|start"
+        android:padding="16dp"
+        android:text="@string/select_toppings"
+        android:textColor="@color/deep_brown"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/receipt_slot"
+        app:layout_constraintStart_toStartOf="@id/receipt_slot"
+        app:layout_constraintTop_toBottomOf="@id/receipt_slot" />
+
+    <!--
+        CHEF AVATAR & REACTION
+        The Beaver Chef reacts to inputs. Dimensions are 0dp to scale responsively.
+    -->
+
+    <ImageView
+        android:id="@+id/chef_img"
+        android:layout_width="267dp"
+        android:layout_height="471dp"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/chef_desc"
+        android:scaleType="fitCenter"
+        android:src="@drawable/beaver_1"
+        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toEndOf="@id/display"
+        app:layout_constraintTop_toBottomOf="@id/header_bg"
+        app:layout_constraintVertical_bias="0.268" />
+
+    <TextView
+        android:id="@+id/chef_reaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/speech_bubble_bg"
+        android:elevation="8dp"
+        android:padding="12dp"
+        android:text="@string/chef_reaction_default"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/chef_img"
+        app:layout_constraintEnd_toEndOf="@id/chef_img"
+        app:layout_constraintStart_toStartOf="@id/chef_img"
+        app:layout_constraintTop_toTopOf="@id/chef_img"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <!--
+        ACTION CONTROLS
+        Strategic placement for easy reach.
+    -->
+    <Button
+        android:id="@+id/btnBake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_rounded_bg"
+        app:backgroundTint="@null"
+        android:text="@string/bake_btn"
+        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_clear_rounded_bg"
+        app:backgroundTint="@null"
+        android:text="@string/clear_btn"
+        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal"
+        app:layout_constraintStart_toEndOf="@id/display" />
+
+    <!--
+        INGREDIENTS FLOW
+        The Flow helper handles the responsive grid layout for all ingredient buttons.
+        Added layoutAnimation for a smooth entrance when the app opens.
+    -->
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/ingredient_flow"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:layoutAnimation="@anim/layout_fall_down"
+        app:constraint_referenced_ids="btnChicken,btnBeef,btnLavash,btnLettuce,btnOnions,btnFries,btnPickled,btnTomatoes,btnGarlic,btnAdd,btnSub,btnMul,btnDiv"
+        app:flow_horizontalGap="8dp"
+        app:flow_maxElementsWrap="4"
+        app:flow_verticalGap="12dp"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal" />
+
+    <!-- INDIVIDUAL INGREDIENT BUTTONS (Circular) -->
+    <ImageButton android:id="@+id/btnChicken" android:layout_width="72dp" android:layout_height="72dp" android:src="@drawable/chicken" android:scaleType="fitCenter" android:contentDescription="@string/topping_chicken" android:background="@drawable/circle_button_bg" android:padding="12dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+    <ImageButton android:id="@+id/btnBeef" android:layout_width="72dp" android:layout_height="72dp" android:src="@drawable/beef" android:scaleType="fitCenter" android:contentDescription="@string/topping_beef" android:background="@drawable/circle_button_bg" android:padding="12dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+    <ImageButton android:id="@+id/btnLavash" android:layout_width="72dp" android:layout_height="72dp" android:src="@drawable/lavash" android:scaleType="fitCenter" android:contentDescription="@string/topping_lavash" android:background="@drawable/circle_button_bg" android:padding="12dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+    <ImageButton android:id="@+id/btnLettuce" android:layout_width="72dp" android:layout_height="72dp" android:src="@drawable/lettuce" android:scaleType="fitCenter" android:contentDescription="@string/topping_lettuce" android:background="@drawable/circle_button_bg" android:padding="12dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+    <ImageButton android:id="@+id/btnOnions" android:layout_width="72dp" android:layout_height="72dp" android:src="@drawable/onions" android:scaleType="fitCenter" android:contentDescription="@string/topping_onions" android:background="@drawable/circle_button_bg" android:padding="12dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+    <ImageButton android:id="@+id/btnFries" android:layout_width="72dp" android:layout_height="72dp" android:src="@drawable/french_fries" android:scaleType="fitCenter" android:contentDescription="@string/topping_fries" android:background="@drawable/circle_button_bg" android:padding="12dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+    <ImageButton android:id="@+id/btnPickled" android:layout_width="72dp" android:layout_height="72dp" android:src="@drawable/pickles" android:scaleType="fitCenter" android:contentDescription="@string/topping_pickled" android:background="@drawable/circle_button_bg" android:padding="12dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+    <ImageButton android:id="@+id/btnTomatoes" android:layout_width="72dp" android:layout_height="72dp" android:src="@drawable/tomatoes" android:scaleType="fitCenter" android:contentDescription="@string/topping_tomatoes" android:background="@drawable/circle_button_bg" android:padding="12dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+    <ImageButton android:id="@+id/btnGarlic" android:layout_width="72dp" android:layout_height="72dp" android:src="@drawable/garlic_sauce" android:scaleType="fitCenter" android:contentDescription="@string/topping_garlic" android:background="@drawable/circle_button_bg" android:padding="12dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+
+    <!-- OPERATOR BUTTONS (Circular Golden) -->
+    <ImageButton android:id="@+id/btnAdd" android:layout_width="72dp" android:layout_height="72dp" android:src="@android:drawable/ic_input_add" android:scaleType="centerInside" android:contentDescription="@string/op_add" android:background="@drawable/circle_operator_bg" android:padding="16dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+    <ImageButton android:id="@+id/btnSub" android:layout_width="72dp" android:layout_height="72dp" android:src="@android:drawable/ic_delete" android:scaleType="centerInside" android:contentDescription="@string/op_sub" android:background="@drawable/circle_operator_bg" android:padding="16dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+    <ImageButton android:id="@+id/btnMul" android:layout_width="72dp" android:layout_height="72dp" android:src="@android:drawable/ic_menu_add" android:scaleType="centerInside" android:contentDescription="@string/op_mul" android:background="@drawable/circle_operator_bg" android:padding="16dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+    <ImageButton android:id="@+id/btnDiv" android:layout_width="72dp" android:layout_height="72dp" android:src="@android:drawable/button_onoff_indicator_on" android:scaleType="centerInside" android:contentDescription="@string/op_div" android:background="@drawable/circle_operator_bg" android:padding="16dp" android:stateListAnimator="@animator/button_pop" android:elevation="2dp" />
+
+    <!--
+        LOADING OVERLAY (Custom Splash)
+        Shows a progress bar on a pastel red background.
+    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loading_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/brand_red"
+        android:elevation="100dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/splash_logo"
+            android:layout_width="320dp"
+            android:layout_height="320dp"
+            android:contentDescription="@string/shop_name"
+            android:src="@drawable/splash_icon"
+            app:layout_constraintBottom_toTopOf="@id/loading_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <ProgressBar
+            android:id="@+id/loading_bar"
+            style="@android:style/Widget.Material.ProgressBar.Horizontal"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="@color/brand_yellow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/splash_logo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

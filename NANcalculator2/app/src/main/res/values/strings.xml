@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">WrapLab NanClaculator</string>
+    <string name="shop_name">WrapLab NanClaculator</string>
+    <string name="info_desc">About WrapLab and Chef Beaver</string>
+    <string name="select_toppings">Start your wrap…</string>
+    <string name="chef_desc">Chef Beaver - Master of Wraps</string>
+    <string name="bake_btn">WRAP IT!</string>
+    <string name="clear_btn">REDO</string>
+
+    <string name="topping_chicken">🍗 Chicken</string>
+    <string name="topping_beef">🥩 Beef</string>
+    <string name="topping_lavash">🌯 Lavash</string>
+    <string name="topping_lettuce">🥬 Lettuce</string>
+    <string name="topping_onions">🧅 Onions</string>
+    <string name="topping_fries">🍟 Fries</string>
+    <string name="topping_pickled">🥒 Pickles</string>
+    <string name="topping_tomatoes">🍅 Tomatoes</string>
+    <string name="topping_garlic">🧄 Garlic</string>
+
+    <string name="op_add">+</string>
+    <string name="op_sub">-</string>
+    <string name="op_mul">×</string>
+    <string name="op_div">÷</string>
+
+    <string name="welcome_title">Welcome to WrapLab!</string>
+    <string name="welcome_msg">Join Chef Beaver to craft the perfect shawarma! 🌯\n\n1. Select your ingredients.\n2. Use + for double the flavor.\n3. Use - to remove a topping.\n4. Use × for the Jumbo Wrap.\n5. Use ÷ for the Half-Half special.\n6. Hit WRAP IT! to serve.</string>
+    <string name="got_it">Yalla!</string>
+
+    <string name="order_prefix">YOUR WRAP:\n</string>
+    <string name="separator_half_half">--- HALF &amp; HALF ---</string>
+    <string name="error_no_ingredients">Error: Empty pita!\nJust air.\nResult: NaN (Not a Numnum)</string>
+    <plurals name="order_ready_plural">
+        <item quantity="one">SAHTAIN!\n\nYour wrap with %1$d ingredient is ready!</item>
+        <item quantity="other">SAHTAIN!\n\nYour wrap with %1$d ingredients is ready!</item>
+    </plurals>
+    <string name="double_toppings">Double %1$s!</string>
+    <string name="family_size">JUMBO WRAP!\n(Extra Everything)</string>
+    <string name="half_half">CUT IN HALF!</string>
+    <string name="chef_reaction_default">Mmm!</string>
+    <string name="chef_reaction_add">Habibi!</string>
+    <string name="chef_reaction_bake">Mashallah!</string>
+    <string name="chef_reaction_clear">Fresh Pita!</string>
+    <string name="chef_reaction_double">Extra Meat!</string>
+    <string name="chef_reaction_remove">Perfectly Balanced!</string>
+    <string name="chef_reaction_family">A Feast for Kings!</string>
+    <string name="chef_reaction_half">The Best of Both!</string>
+</resources>
